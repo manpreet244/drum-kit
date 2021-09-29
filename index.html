@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="keys">
+        <div data-key ="65" class="key">
+            <kbd>A</kbd>
+            <span class="sound">clap</span>
+        </div>
+    <div class="keys">
+        <div data-key ="83" class="key">
+            <kbd>S</kbd>
+            <span class="sound">hihat</span>
+            </div>
+    <div class="keys">
+        <div data-key ="68" class="key">
+            <kbd>D</kbd>
+            <span class="sound">kick</span>
+            </div>
+    <div class="keys">
+        <div data-key ="70" class="key">
+            <kbd>F</kbd>
+            <span class="sound">openhat</span>
+            </div>
+   
+    <div class="keys">
+        <div data-key ="71" class="key">
+             <kbd>H</kbd>
+             <span class="sound">boom</span>
+             </div>  
+    <div class="keys">
+        <div data-key ="74" class="key">
+             <kbd>J</kbd>
+             <span class="sound">snare</span>
+             </div>
+     
+    <div class="keys">
+        <div data-key ="75" class="key">
+             <kbd>K</kbd>
+             <span class="sound">tom</span>
+             </div>
+    <div class="keys">
+        <div data-key ="76" class="key">
+             <kbd>L</kbd>
+             <span class="sound">tinK</span>
+             </div>
+    </div>
+
+    <audio src="https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Claps/8[kb]clap.wav.mp3" data-key="65"></audio>
+    <audio src="sounds2.wav" data-key="83"></audio>
+    <audio src="kick.mp3" data-key="68"></audio>
+    <audio src="openhat.mp3" data-key="70"></audio>
+    <audio src="boom.wav" data-key="71"></audio>
+    <audio src="ride.wav" data-key="72"></audio>
+    <audio src="snare.wav" data-key="74"></audio>
+    <audio src="tom.wav" data-key="75"></audio>
+    <audio src="tink.mp3" data-key="76"></audio>
+   
+
+    <script>
+    window.addEventListener('keydown',function(e){
+        const audio = document.querySelector(`audio[data-key= "${e.keyCode}"]`);
+        const key  = document.querySelector(`.key[data-key= "${e.keyCode}"]`);
+        if(!audio) return;//stop the function
+        audio.currentTime = 0; //rewind to the start..if we hit that sound again , it will play from the start.
+        
+        audio.play();
+        key.classList.add('playing');
+        // console.log(key);
+         }) ;
+
+        function removeTransition (e){
+            if(e.propertyName !== 'transform') return;//skip if not a transform
+            this.classList.remove('playing');//this = key
+        }
+
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key => key.addEventListener('transitionend',removeTransition));
+
+        </script>
+</body>
+</html>
