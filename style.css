@@ -22,6 +22,8 @@ kbd{
 }
 .keys{
     display:inline;
+    width:100px;
+    height:100px;
 }
 body{
-    backgroung:blue;}
+    background:blue;}
