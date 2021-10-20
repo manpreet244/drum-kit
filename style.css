@@ -9,6 +9,8 @@
     text-align:center;
     background-color: #fff;
     text-shadow: 0 0 5px black;
+    display:inline;
+    height:100px;
 
 }
 .playing{
@@ -26,4 +28,4 @@ kbd{
     height:100px;
 }
 body{
-    background:blue;}
+    background-color:blue;}
